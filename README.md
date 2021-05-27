@@ -21,8 +21,10 @@ cat iptables
         endscript
 }
 systemctl restart logrotate
+```
 
 
+```
 # rpm -qf /etc/logrotate.d
 logrotate-3.8.6-19.el7.x86_64
 
