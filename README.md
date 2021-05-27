@@ -10,6 +10,7 @@ cat iptables
 /var/log/iptables.log
 {
         rotate 7
+        size 100k
         weekly
         missingok
         notifempty
