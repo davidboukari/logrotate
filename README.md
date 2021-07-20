@@ -1,6 +1,56 @@
 # logrotate
 
 ```
+[root@elasticsearch-1 ansible-roles]# ls /etc/logrotate.d/messages
+/etc/logrotate.d/messages
+[root@elasticsearch-1 ansible-roles]# cat /etc/logrotate.d/messages
+/var/log/messages
+{
+        rotate 7
+        size 100k
+        weekly
+        missingok
+        notifempty
+        compress
+        delaycompress
+        sharedscripts
+        postrotate
+                invoke-rc.d rsyslog rotate >/dev/null 2>&1 || true
+        endscript
+}
+
+[root@elasticsearch-1 ansible-roles]# cat /etc/cron.daily/logrotate
+#!/bin/sh
+
+/usr/sbin/logrotate -s /var/lib/logrotate/logrotate.status /etc/logrotate.conf
+EXITVALUE=$?
+if [ $EXITVALUE != 0 ]; then
+    /usr/bin/logger -t logrotate "ALERT exited abnormally with [$EXITVALUE]"
+fi
+exit 0
+
+
+[root@elasticsearch-1 ansible-roles]# cp /etc/cron.daily/logrotate /etc/cron.hourly/messages
+[root@elasticsearch-1 ansible-roles]# cat /etc/cron.hourly/messages
+#!/bin/sh
+
+/usr/sbin/logrotate -s /var/lib/logrotate/logrotate.status /etc/logrotate.conf
+EXITVALUE=$?
+if [ $EXITVALUE != 0 ]; then
+    /usr/bin/logger -t logrotate "ALERT exited abnormally with [$EXITVALUE]"
+fi
+exit 0
+```
+
+
+
+
+
+
+
+
+
+```
 cd /etc/logrotate.d/
 ls
 alternatives  apache2  apport  apt  bootlog  btmp  conntrackd  dpkg  rsyslog  ubuntu-advantage-tools  ufw  unattended-upgrades  wtmp
