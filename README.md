@@ -43,8 +43,21 @@ drwxr-xr-x. 8 root     root     4,0K 21 févr. 16:28 ..
 drwxr-xr-x. 2 logstash root       98 21 févr. 21:24 .
 
 
-
 ````
+
+## Logrotate & cron
+* https://www.tecmint.com/install-logrotate-to-manage-log-rotation-in-linux/
+```
+Logrotate and Cron
+
+By default, the installation of logrotate creates a crontab file inside /etc/cron.daily named logrotate. As it is the case with the other crontab files inside this directory, it will be executed daily starting at 6:25 am if anacron is not installed.
+Suggested Read: 11 Cron Scheduling Task Examples in Linux
+
+Otherwise, the execution will begin around 7:35 am. To verify, watch for the line containing cron.daily in either /etc/crontab or /etc/anacrontab.
+
+```
+
+
 
 ## Others
 ```
