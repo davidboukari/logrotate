@@ -1,5 +1,45 @@
 # logrotate
 
+
+## Ex for logstash
+```
+$ cat  /etc/logrotate.d/logstash 
+/var/log/logstash/logstash-*.log
+{
+      	daily
+        rotate 7
+	size 100M
+        copytruncate
+        compress
+        delaycompress
+        missingok
+        notifempty
+}
+
+
+# -d: debug
+$ logrotate -d /etc/logrotate.d/logstash 
+reading config file /etc/logrotate.d/logstash
+Allocating hash table for state file, size 15360 B
+
+Handling 1 logs
+
+rotating pattern: /var/log/logstash/logstash-*.log
+ 104857600 bytes (7 rotations)
+empty log files are not rotated, old logs are removed
+considering log /var/log/logstash/logstash-deprecation.log
+  log does not need rotating (log size is below the 'size' threshold)
+considering log /var/log/logstash/logstash-plain.log
+  log does not need rotating (log size is below the 'size' threshold)
+considering log /var/log/logstash/logstash-slowlog-plain.log
+  log does not need rotating (log size is below the 'size' threshold)
+
+$ ls /var/log/logstash/
+logstash-deprecation.log  logstash-plain.log  logstash-slowlog-plain.log
+
+
+````
+
 ```
 [root@elasticsearch-1 ansible-roles]# ls /etc/logrotate.d/messages
 /etc/logrotate.d/messages
