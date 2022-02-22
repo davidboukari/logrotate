@@ -40,6 +40,7 @@ logstash-deprecation.log  logstash-plain.log  logstash-slowlog-plain.log
 
 ````
 
+## Others
 ```
 [root@elasticsearch-1 ansible-roles]# ls /etc/logrotate.d/messages
 /etc/logrotate.d/messages
@@ -82,14 +83,7 @@ fi
 exit 0
 ```
 
-
-
-
-
-
-
-=======================
-
+## Others
 ```
 cd /etc/logrotate.d/
 ls
