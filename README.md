@@ -34,8 +34,14 @@ considering log /var/log/logstash/logstash-plain.log
 considering log /var/log/logstash/logstash-slowlog-plain.log
   log does not need rotating (log size is below the 'size' threshold)
 
-$ ls /var/log/logstash/
-logstash-deprecation.log  logstash-plain.log  logstash-slowlog-plain.log
+$  ls -lahtr /var/log/logstash/
+total 36K
+-rw-r--r--. 1 logstash logstash    0 26 mars   2021 logstash-slowlog-plain.log
+drwxr-xr-x. 8 root     root     4,0K 21 févr. 16:28 ..
+-rw-r--r--. 1 logstash logstash 4,5K 21 févr. 20:28 logstash-deprecation.log
+-rw-r--r--. 1 logstash logstash  22K 21 févr. 20:28 logstash-plain.log
+drwxr-xr-x. 2 logstash root       98 21 févr. 21:24 .
+
 
 
 ````
